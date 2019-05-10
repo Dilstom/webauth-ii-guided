@@ -40,14 +40,17 @@ router.post('/login', (req, res) => {
   });
 });
 
-server.get('/api/logout', (req, res) => {
+router.get('/logout', (req, res) => {
  if (req.session) {
   req.session.destroy(err => {
    if (err) {
+    res.send('you can checkout any time you like, but you can never leave...');
    } else {
+    res.send('Bye, thanks for playing');
    }
   });
  } else {
+  res.end();
  }
 });
 
