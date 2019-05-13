@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
  } else {
   res
    .status(401)
-   .json({ message: 'You shall not pass. You are not athenticated' });
+   .json({ message: 'You shall not pass. You are not authenticated' });
  }
 };
 
