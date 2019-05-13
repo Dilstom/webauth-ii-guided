@@ -26,8 +26,6 @@ router.post('/login', (req, res) => {
   .first()
   .then(user => {
    if (user && bcrypt.compareSync(password, user.password)) {
-    // 4. add this to save it on session
-    req.session.user = user;
     res.status(200).json({
      message: `Welcome ${user.username}! , have a cookie`,
     });
@@ -40,18 +38,6 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.get('/logout', (req, res) => {
- if (req.session) {
-  req.session.destroy(err => {
-   if (err) {
-    res.send('you can checkout any time you like, but you can never leave...');
-   } else {
-    res.send('Bye, thanks for playing');
-   }
-  });
- } else {
-  res.end();
- }
-});
+// no logout on the server
 
 module.exports = router;
